@@ -6,18 +6,25 @@ const axios = require('axios');         //  Promise based HTTP client for the br
 
 const app = express();
 
+var address = "https://trading.hellostake.com/dashboard/portfolio"
+
+axios.get(address).then(response => {
+    const html = response.data
+    const $ = cheerio.load(html)
+})
+
 app.listen(
     PORT,
     () => console.log(`Server running on PORT ${PORT}`)
 );
 
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.json('Welcome to the Stake API')
 });
 
-app.get('/endpoint1', (req,res) => {
+app.get('/endpoint1', (req, res) => {
     res.status(200).send({
-        text:'Hi',
-        text2:'You have reached endpoint 1'
+        text: 'Hi',
+        text2: 'You have reached endpoint 1'
     })
 });
