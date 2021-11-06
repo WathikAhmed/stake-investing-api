@@ -1,0 +1,26 @@
+{
+  "name": "stake-investing-api",
+  "version": "1.0.0",
+  "description": "Access your Stake account data",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WathikAhmed/stake-investing-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WathikAhmed/stake-investing-api/issues"
+  },
+  "homepage": "https://github.com/WathikAhmed/stake-investing-api#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14"
+  }
+}
