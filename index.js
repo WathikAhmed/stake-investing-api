@@ -8,11 +8,7 @@ const app = express();
 
 var address = "https://trading.hellostake.com/dashboard/portfolio"
 
-axios.get(address).then(response => {
-    const html = response.data
-    const $ = cheerio.load(html)
-    print($)
-})
+
 
 app.listen(
     PORT,
@@ -21,6 +17,11 @@ app.listen(
 
 app.get('/', (req, res) => {
     res.json('Welcome to the Stake API')
+    axios.get(address).then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        res.sendFile($);
+    })
 });
 
 app.get('/endpoint1', (req, res) => {
