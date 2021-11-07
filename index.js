@@ -3,10 +3,12 @@ const express = require('express');     //  Framework that provides a robust set
 const cheerio = require('cheerio');     //  Cheerio parses markup and provides an API for traversing/manipulating the resulting data structure.
 const axios = require('axios');         //  Promise based HTTP client for the browser and node.js
 
+const request = require('request');
 
 const app = express();
 
-var address = "https://trading.hellostake.com/dashboard/portfolio"
+
+
 
 
 
@@ -16,17 +18,22 @@ app.listen(
 );
 
 app.get('/', (req, res) => {
-    axios.get(address).then(response => {
-        const html = response.data
-        const $ = cheerio.load(html)
-        
-        $('h3:contains("US")', html).each(function () {
-            const equityValue = $(this).text()
-            res.json(equityValue)
-        })
-        res.json("Welcome to Stake API")
-    })
+    request('https://trading.hellostake.com/dashboard/portfolio', (error, response, html) => {
+        if (!error && response.statusCode == 200) {
+            const $ = cheerio.load(html);
+
+            const value = $("div");
+
+
+
+            console.log(value.text());
+        }
+    });
+    res.json('Welcome to the Stake API')
+
 });
+
+
 
 app.get('/endpoint1', (req, res) => {
     res.status(200).send({
