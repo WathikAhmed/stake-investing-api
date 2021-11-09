@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const address1 = 'https://www.npmjs.com/package/cheerio'
 const address2 = 'ttps://trading.hellostake.com/dashboard/portfolio'
 
-
+console.log("Starting>>>>>>>>>>>>>>>>>>>>>>>");
 request(address1, (error, response, html) => {
   if (!error && response.statusCode == 200) {
     const $ = cheerio.load(html);
